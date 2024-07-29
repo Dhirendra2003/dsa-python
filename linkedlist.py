@@ -87,6 +87,26 @@ class Sll:
         new_node.next=pos_node
         prev_node.next=new_node
 
+    def rev_list(self):
+        if(self.head == None) or (self.head.next == None):
+            return
+        else:
+            temp_node=self.head
+            prev_node=None
+            next_node=self.head.next
+            #self.head.next=None
+            while temp_node is not None:
+                next_node = temp_node.next
+                temp_node.next=prev_node
+                prev_node=temp_node
+                temp_node = next_node
+
+            self.head = prev_node
+
+
+
+
+
 
 ll1=Sll(head=None)
 ll1.insert_at_start(2)
@@ -110,5 +130,7 @@ ll1.insert_at(69,1)
 ll1.show_list()
 ll1.insert_at(101,9)
 ll1.show_list()
-ll1.insert_at(101,10)
+ll1.insert_at(121,10)
+ll1.show_list()
+ll1.rev_list()
 ll1.show_list()
