@@ -102,10 +102,19 @@ class Sll:
                 temp_node = next_node
 
             self.head = prev_node
-
-
-
-
+    def __iter__(self):
+        return LLiterator(self.head)
+class LLiterator:
+    def __init__(self,head):
+        self.current=head
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        data=self.current.data
+        self.current=self.current.next
+        return data
 
 
 ll1=Sll(head=None)
@@ -134,3 +143,5 @@ ll1.insert_at(121,10)
 ll1.show_list()
 ll1.rev_list()
 ll1.show_list()
+for i in ll1:
+    print(i)
