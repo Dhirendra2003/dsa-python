@@ -59,8 +59,19 @@ class Dll:
                 self.head=pos_next
             if(pos_next):
                 pos_next.prev=pos_prev
-
-
+    def __iter__(self):
+        return DLLIterator(self.head)
+class DLLIterator:
+    def __init__(self,start):
+        self.current=start
+    def __iter__(self):
+        return  self
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        data=self.current.data
+        self.current=self.current.next
+        return data
 dll1=Dll()
 print(dll1.is_empty())
 dll1.show_list()
@@ -70,11 +81,14 @@ dll1.insert_at_start(7)
 dll1.insert_at_start(8)
 dll1.insert_at_last(66)
 dll1.show_list()
+for i in dll1:
+    print(i)
 dll1.delete_at_pos(1)
 dll1.show_list()
-dll1.delete_at_pos(4)
+dll1.delete_at_pos(3)
 dll1.show_list()
 dll1.delete_at_pos(3)
 dll1.delete_at_pos(2)
 dll1.delete_at_pos(1)
 dll1.show_list()
+
