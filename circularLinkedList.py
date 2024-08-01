@@ -85,8 +85,47 @@ class CircLL:
             second_last.next=self.last.next
             self.last=second_last
 
+    def delete_data(self,data):
+        if(self.last.next):
+            if(self.last.next==self.last):
+                self.last=None
+                return
+            elif(self.last.next.data==data):
+                self.delete_first()
+            else:
+                temp=self.last.next
 
+                while temp!=self.last:
+                    if(temp.next==self.last):
+                        self.delete_last()
+                        break
+                    if(temp.next.data==data):
+                        temp.next=temp.next.next
+                        break
+                    temp=temp.next
+    def __iter__(self):
+        return  CLLIterator(self.last.next,self.last)
+class CLLIterator():
+    def __init__(self,starter,last):
+        self.current=starter
+        self.last=last
+        self.to_last=0
+    def __iter__(self):
+        return self
+    def __next__(self):
 
+        if self.current==None or self.to_last==1:
+            raise StopIteration
+        data=self.current.data
+        self.current=self.current.next
+        if (self.current == self.last.next):
+            if(self.to_last==0):
+                self.to_last=1
+                return data
+            raise StopIteration
+        return data
+
+strll=""
 cll1=CircLL()
 cll1.inset_at_start(5)
 cll1.show_list()
@@ -113,6 +152,14 @@ cll1.delete_last()
 cll1.show_list()
 cll1.delete_last()
 cll1.show_list()
+for i in cll1:
+    strll=f"{strll}=>{i}"
+print(strll)
+cll1.delete_data(666)
+cll1.show_list()
+cll1.delete_data(8)
+cll1.show_list()
+
 
 
 
