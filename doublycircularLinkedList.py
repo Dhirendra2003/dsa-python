@@ -87,12 +87,57 @@ class DCll:
             data_node.next.prev=n
             data_node.next=n
 
+    def delete_start(self):
+        if(self.is_empty()):
+            return
+        elif (self.head==self.head.next):
+            self.head=None
+        else:
+            self.head.next.prev=self.head.prev
+            self.head.prev.next=self.head.next
+            self.head=self.head.next
 
+    def delete_data(self,data):
+        data_node=self.search(data)
+        if data_node is None:
+            print('node not found')
+            return
+        elif self.head.data==data:
+            self.delete_start()
+        else:
+            data_node.next.prev=data_node.prev
+            data_node.prev.next=data_node.next
 
+    def __iter__(self):
+        return  CLLIterator(self.head)
+class CLLIterator():
+    def __init__(self,starter):
+        self.current=starter
+        self.head=starter
+        self.to_last=0
+    def __iter__(self):
+        return self
+    def __next__(self):
+
+        if self.current==None or self.to_last==1:
+            raise StopIteration
+        data=self.current.data
+        self.current=self.current.next
+        if (self.current == self.head):
+            if(self.to_last==0):
+                self.to_last=1
+                return data
+            raise StopIteration
+        return data
 
 
 cdll1=DCll()
+cdll1.delete_start()
+cdll1.show_list()
 cdll1.insert_at_last(111)
+cdll1.show_list()
+cdll1.delete_start()
+cdll1.show_list()
 cdll1.insert_at_last(112)
 cdll1.show_list()
 cdll1.insert_at_start(5)
@@ -110,3 +155,13 @@ cdll1.insert_after(666,12)
 cdll1.show_list()
 cdll1.insert_after(666,12312)
 cdll1.show_list()
+cdll1.delete_data(5)
+cdll1.show_list()
+cdll1.delete_data(77)
+cdll1.show_list()
+cdll1.delete_data(767)
+cdll1.show_list()
+strll=""
+for i in cdll1:
+    strll=f"{strll}=>{i}"
+print(strll)
