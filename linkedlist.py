@@ -87,6 +87,10 @@ class Sll:
         new_node.next=pos_node
         prev_node.next=new_node
 
+    def delet_first(self):
+        if not (self.is_empty()):
+            self.head=self.head.next
+
     def rev_list(self):
         if(self.head == None) or (self.head.next == None):
             return
@@ -117,31 +121,31 @@ class LLiterator:
         return data
 
 
-ll1=Sll(head=None)
-ll1.insert_at_start(2)
-ll1.insert_at_start(5)
-ll1.insert_at_start(8)
-ll1.insert_at_start(7)
-ll1.insert_at_start(3)
-ll1.insert_at_start(90)
-ll1.show_list()
-print(ll1.search(5))
-print(ll1.search(1))
-print(ll1.search(90))
-ll1.insert_at_last(1)
-ll1.show_list()
-ll1.remove_last_node()
-ll1.show_list()
-
-ll1.insert_at(69,3)
-ll1.show_list()
-ll1.insert_at(69,1)
-ll1.show_list()
-ll1.insert_at(101,9)
-ll1.show_list()
-ll1.insert_at(121,10)
-ll1.show_list()
-ll1.rev_list()
-ll1.show_list()
-for i in ll1:
-    print(i)
+# ll1=Sll(head=None)
+# ll1.insert_at_start(2)
+# ll1.insert_at_start(5)
+# ll1.insert_at_start(8)
+# ll1.insert_at_start(7)
+# ll1.insert_at_start(3)
+# ll1.insert_at_start(90)
+# ll1.show_list()
+# print(ll1.search(5))
+# print(ll1.search(1))
+# print(ll1.search(90))
+# ll1.insert_at_last(1)
+# ll1.show_list()
+# ll1.remove_last_node()
+# ll1.show_list()
+#
+# ll1.insert_at(69,3)
+# ll1.show_list()
+# ll1.insert_at(69,1)
+# ll1.show_list()
+# ll1.insert_at(101,9)
+# ll1.show_list()
+# ll1.insert_at(121,10)
+# ll1.show_list()
+# ll1.rev_list()
+# ll1.show_list()
+# for i in ll1:
+#     print(i)
