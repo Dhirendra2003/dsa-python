@@ -11,7 +11,8 @@ class Queue:
     def dequeue(self):
         if not self.is_empty():
             deq_item=self.item[0]
-            self.item=self.item[1:]
+            #self.item=self.item[1:]
+            self.item.pop(0)
             return deq_item
         else:
             print("queue empty")
