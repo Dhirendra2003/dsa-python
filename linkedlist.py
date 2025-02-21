@@ -68,20 +68,20 @@ class Sll:
 
         prev_node=None
         pos_node = self.head
-        lenght=0
+        length=0
         for i in range(1,pos):
             if(pos_node.next==None):
-                if (lenght+2 == pos):
+                if (length+2 == pos):
                     self.insert_at_last(data)
-                    lenght+=1
+                    length+=1
                     return
                 else:
                     print(f"list does not have {pos} elements")
-                    print("legth is",lenght)
+                    print("legth is",length)
                 return
             prev_node=pos_node
             pos_node = pos_node.next
-            lenght+=1
+            length+=1
         #print(pos_node.data)
         new_node=Node(data)
         new_node.next=pos_node
